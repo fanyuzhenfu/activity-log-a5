@@ -9,7 +9,6 @@ on:
         description: Select pass or an intentional failure demonstration
         required: true
         default: pass
-        type: string
 
 permissions:
   contents: read
