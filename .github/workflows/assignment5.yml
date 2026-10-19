@@ -1,6 +1,6 @@
 name: Assignment 5 Build Test Release
 
-"on":
+on:
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -9,8 +9,7 @@ name: Assignment 5 Build Test Release
         description: Select pass or an intentional failure demonstration
         required: true
         default: pass
-        type: choice
-        options: [pass, fail-unit, fail-integration]
+        type: string
 
 permissions:
   contents: read
