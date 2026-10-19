@@ -1,6 +1,19 @@
 name: Assignment 5 Build Test Release
 
-on: [pull_request, workflow_dispatch]
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      test_scenario:
+        description: Select pass, fail-unit, or fail-integration
+        required: true
+        default: pass
+        type: choice
+        options:
+          - pass
+          - fail-unit
+          - fail-integration
 
 permissions:
   contents: read
