@@ -1,0 +1,5 @@
+setEnv.bat
+
+node_modules
+.evidence/
+tmp/
