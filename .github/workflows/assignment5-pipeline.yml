@@ -83,7 +83,7 @@ jobs:
         run: |
           set -o pipefail
           mkdir -p reports
-          node --test test/templateEngine.test.js test/unit/template.unit.test.js --test-reporter=junit --test-reporter-destination=reports/unit-${{ matrix.node }}.xml
+          node --test --test-reporter=junit --test-reporter-destination=reports/unit-${{ matrix.node }}.xml test/templateEngine.test.js test/unit/template.unit.test.js
       - name: Intentional unit failure demonstration
         if: env.TEST_SCENARIO == 'fail-unit'
         run: npm run test:demo
@@ -111,7 +111,7 @@ jobs:
       - name: Run integration tests with JUnit output
         run: |
           mkdir -p reports
-          node --test test/integration/event-pipeline.integration.test.js --test-reporter=junit --test-reporter-destination=reports/integration.xml
+          node --test --test-reporter=junit --test-reporter-destination=reports/integration.xml test/integration/event-pipeline.integration.test.js
       - name: Intentional integration failure demonstration
         if: env.TEST_SCENARIO == 'fail-integration'
         run: npm run test:demo -- --test-name-pattern='never-match'
@@ -135,7 +135,7 @@ jobs:
       - name: Run tests and generate LCOV coverage
         run: |
           mkdir -p coverage
-          node --experimental-test-coverage --test test/templateEngine.test.js test/unit/template.unit.test.js test/integration/event-pipeline.integration.test.js --test-reporter=lcov --test-reporter-destination=coverage/lcov.info
+          node --experimental-test-coverage --test --test-reporter=lcov --test-reporter-destination=coverage/lcov.info test/templateEngine.test.js test/unit/template.unit.test.js test/integration/event-pipeline.integration.test.js
       - name: Enforce coverage threshold
         shell: bash
         run: |
