@@ -1,6 +1,6 @@
 name: Assignment 5 Build Test Release
 
-on:
+"on":
   pull_request:
     branches: [main]
   workflow_dispatch:
